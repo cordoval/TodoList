@@ -1,6 +1,7 @@
 <?php
 
 //Incomplete! Wanna help?
+require 'TodoList.php';
 
 class TodoListTest extends PHPUnit_Framework_TestCase {
     public function setUp($data = array())
@@ -25,7 +26,7 @@ class TodoListTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($this->todo['Foo'], true);
         $this->assertEquals($this->todo['Bar'], false);
     }
-    public function testOffsetSet() {
+    public function testOffsetSetForNonExistingTask() {
         $this->stm->expects($this->once())
                   ->method('execute')
                   ->with($this->equalTo(array('Baz', true)));
@@ -33,6 +34,19 @@ class TodoListTest extends PHPUnit_Framework_TestCase {
                  ->method('prepare')
                  ->with($this->equalTo(TodoList::INSERT))
                  ->will($this->returnValue($this->stm));
+        $this->todo['Baz'] = true;
+    }
+    public function testOffsetSetForExistingTask() {
+        $this->setUp(array('Baz' => false));
+
+        $this->stm->expects($this->once())
+            ->method('execute')
+            ->with($this->equalTo(array(true, 'Baz')));
+        $this->db->expects($this->once())
+            ->method('prepare')
+            ->with($this->equalTo(TodoList::UPDATE))
+            ->will($this->returnValue($this->stm));
+
         $this->todo['Baz'] = true;
     }
 }
