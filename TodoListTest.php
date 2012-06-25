@@ -49,4 +49,26 @@ class TodoListTest extends PHPUnit_Framework_TestCase {
 
         $this->todo['Baz'] = true;
     }
+    public function testOffsetUnSetForNonExistingTask() {
+        $this->stm->expects($this->once())
+            ->method('execute')
+            ->with($this->equalTo('Baz'));
+        $this->db->expects($this->once())
+            ->method('prepare')
+            ->with($this->equalTo(TodoList::DELETE))
+            ->will($this->returnValue($this->stm));
+        unset($this->todo['Baz']);
+    }
+    public function testOffsetUnSetForExistingTask() {
+        $this->setUp(array('Baz' => false));
+
+        $this->stm->expects($this->once())
+            ->method('execute')
+            ->with($this->equalTo('Baz'));
+        $this->db->expects($this->once())
+            ->method('prepare')
+            ->with($this->equalTo(TodoList::DELETE))
+            ->will($this->returnValue($this->stm));
+        unset($this->todo['Baz']);
+    }
 }

@@ -30,6 +30,8 @@ class TodoList extends ArrayObject
     public function offsetUnset($task) 
     {
         $this->db->prepare(static::DELETE)->execute($task);
-        parent::offsetUnset($task);
+        if (parent::offsetExists($task)) {
+            parent::offsetUnset($task);
+        }
     }
 }
