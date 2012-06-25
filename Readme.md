@@ -5,7 +5,7 @@ SfCon2012 Community Project by @alganet
 
 This project was somehow hinted by Augusto's presentation on TDD at SfCon2012 in Bello Horizonte, Brasil.
 
-This approach here on the repo is Alexandre's approach to a similar problem. Not exactly TDD but good testing practices
+This approach here on the repo is Alexandre's approach [here](https://gist.github.com/2976029) to a similar problem. Not exactly TDD but good testing practices
 and mocking.
 
 The current idea is to make this gist into a proper repo and contribute as a community as an exercise to put in practice
