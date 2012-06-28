@@ -1,5 +1,7 @@
 <?php 
 
+namespace Fazer;
+
 //The actual implementation is just this file. Others are usage and tests.
 
 class TodoList extends ArrayObject 

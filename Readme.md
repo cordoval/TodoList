@@ -12,3 +12,16 @@ The current idea is to make this gist into a proper repo and contribute as a com
 what we have all learned at the conference, foster collaboration, resolve doubts, and perhaps take it to the next level.
 
 base code by @alganet, @augustohp had a TDD approach, and the other talks are all inspirting this repo.
+
+Usage
+=====
+
+```
+<?php
+
+$todo = new TodoList(new PDO('mysql:host=localhost;dbName=tasks', 'user', 'pass'));
+
+$todo['Implement the todo list'] = true; //done it!
+$todo['Create some tests'] = false;      //not done yet
+unset($todo['Make a gist']);             //remove this one
+```

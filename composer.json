@@ -1,0 +1,25 @@
+{
+    "name": "cordoval/todolist",
+    "description": "Todo list pdo class",
+    "keywords": [
+        "todo",
+        "list"
+    ],
+    "homepage": "http://github.com/cordoval/TodoList",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sfcon'2012 community project",
+            "email": "cordoval@gmali.com",
+            "homepage": "http://github.com/cordoval/TodoList"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": {
+            "Fazer": "lib/"
+        }
+    }
+}

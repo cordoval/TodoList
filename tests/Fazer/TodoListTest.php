@@ -1,7 +1,6 @@
 <?php
 
-//Incomplete! Wanna help?
-require 'TodoList.php';
+namespace Fazer;
 
 class TodoListTest extends PHPUnit_Framework_TestCase {
     public function setUp($data = array())
