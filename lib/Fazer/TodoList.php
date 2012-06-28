@@ -4,7 +4,7 @@ namespace Fazer;
 
 //The actual implementation is just this file. Others are usage and tests.
 
-class TodoList extends ArrayObject 
+class TodoList extends \ArrayObject 
 {
     const CREATE = 'CREATE TABLE IF NOT EXISTS tasks (name VARCHAR(32) PRIMARY KEY, status INT)';
     const SELECT = 'SELECT * FROM tasks';
@@ -14,11 +14,11 @@ class TodoList extends ArrayObject
 
     protected $db;
 
-    public function __construct(PDO $db) 
+    public function __construct(\PDO $db) 
     {
         $this->db = $db;
         $db->exec(static::CREATE);
-        $data = $db->query(static::SELECT, PDO::FETCH_KEY_PAIR)->fetchAll();
+        $data = $db->query(static::SELECT, \PDO::FETCH_KEY_PAIR)->fetchAll();
         parent::__construct($data, static::ARRAY_AS_PROPS);
     }
     public function offsetSet($task, $status) 

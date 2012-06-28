@@ -2,13 +2,13 @@
 
 namespace Fazer;
 
-class TodoListTest extends PHPUnit_Framework_TestCase {
+class TodoListTest extends \PHPUnit_Framework_TestCase {
     public function setUp($data = array())
     {
         $this->db = $this->getMock('PDO', array('exec', 'query', 'prepare'), array('sqlite::memory:'));
         $this->db->expects($this->once())
              ->method('exec')
-             ->with($this->equalTo(TodoList::CREATE, PDO::FETCH_KEY_PAIR));
+             ->with($this->equalTo(TodoList::CREATE, \PDO::FETCH_KEY_PAIR));
         $this->stm = $this->getMock('PDOStatement', array('fetchAll', 'execute'));
         $this->stm->expects($this->once())
               ->method('fetchAll')
