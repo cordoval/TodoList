@@ -23,10 +23,12 @@ class TodoList extends \ArrayObject
     }
     public function offsetSet($task, $status) 
     {
-        if (!isset($this[$task]))
+        if (!isset($this[$task])) {
             $this->db->prepare($this->insert)->execute(array($task, $status));
-        else
+        } else {
             $this->db->prepare($this->update)->execute(array($status, $task));
+        }
+
         parent::offsetSet($task, $status);
     }
     public function offsetUnset($task) 
